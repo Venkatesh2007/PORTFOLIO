@@ -10,7 +10,7 @@ const experiences = [
         role: "App Developer",
         title: "Afflicartz",
         period: "Aug 2024 – Nov 2024",
-        logo: "src/assets/affli_logo.png",
+        logo: "/affli_logo.png",
         website: "https://afflicartz.com",
         points: [
             "Developed cashback app & website.",
@@ -23,7 +23,7 @@ const experiences = [
         role: "Shopify Developer Intern",
         title: "Sai Ram Snacks",
         period: "Dec 2024 – Feb 2025",
-        logo: "src/assets/sairam_logo.png",
+        logo: "/sairam_logo.png",
         website: "https://sairamsnacks.com",
         points: [
             "Customized an e-commerce site using Shopify.",

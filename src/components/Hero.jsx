@@ -243,6 +243,12 @@ const HeroWithImage = ({ imageSrc }) => {
                             onMouseEnter={() => handleButtonHover(0, true)}
                             onMouseLeave={() => handleButtonHover(0, false)}
                             className="bg-cyan-600 px-6 py-2 rounded-full font-medium shadow-md transition-transform duration-300 font-mono"
+                            onClick={() => {
+                                const section = document.getElementById("projects");
+                                if (section) {
+                                    section.scrollIntoView({ behavior: "smooth" });
+                                }
+                            }}
                         >
                             View Projects
                         </button>
