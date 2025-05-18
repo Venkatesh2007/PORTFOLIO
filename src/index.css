@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+.bg-grid-pattern {
+  background-color: rgba(0, 4, 24, 0.966);
+  background-image: linear-gradient(rgba(0, 225, 255, 0.39) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 170, 0.349) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
