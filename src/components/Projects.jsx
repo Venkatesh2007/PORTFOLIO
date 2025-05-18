@@ -2,6 +2,11 @@ import { BsRocketTakeoff } from 'react-icons/bs';
 import { FiLink } from 'react-icons/fi';
 import NeonGrid from './NeonGrid';
 import { Helmet } from 'react-helmet';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -37,58 +42,84 @@ const projects = [
 ];
 
 
-const Projects = () => (
-  <>
-    <Helmet>
-      <title>Badam Venkatesh Portfolio</title>
-      <meta name="description" content="View the software projects built by Badam Venkatesh including React apps, Flutter projects, and open-source contributions." />
-      <meta name="keywords" content="Badam Venkatesh projects, React projects, Flutter projects, software development portfolio, open source" />
-    </Helmet>
-    <section id="projects" className="relative py-20 px-6 bg-[#0a0f2a] font-mono min-h-screen overflow-hidden text-white">
-      {/* Neon Grid Background */}
-      <NeonGrid />
+const Projects = () => {
+  const cardsRef = useRef([]);
 
-      <h2
-        className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent text-center drop-shadow-[0_0_15px_rgba(0,191,255,0.8)] experience-heading mb-10"
-      >
-        <BsRocketTakeoff className="w-10 h-10 mr-3 text-cyan-400 inline" />
-        Projects
-      </h2>
+  useEffect(() => {
+    gsap.fromTo(
+      cardsRef.current,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#projects",
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
+  return (
+    <>
+      <Helmet>
+        <title>Badam Venkatesh Portfolio</title>
+        <meta name="description" content="View the software projects built by Badam Venkatesh including React apps, Flutter projects, and open-source contributions." />
+        <meta name="keywords" content="Badam Venkatesh projects, React projects, Flutter projects, software development portfolio, open source" />
+      </Helmet>
+      <section id="projects" className="relative py-20 px-6 bg-[#0a0f2a] font-mono min-h-screen overflow-hidden text-white">
+        {/* Neon Grid Background */}
+        <NeonGrid />
 
-      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-        {projects.map((proj, i) => (
-          <div
-            key={i}
-            className="group relative bg-[#1e293b] border border-cyan-500/30 p-6 rounded-xl shadow-lg transition-transform hover:scale-[1.03] hover:shadow-cyan-500/60 hover:-translate-y-1 duration-300 cursor-default"
-          >
-            <div className="absolute -top-4 left-4 bg-cyan-500 text-white text-xs px-2 py-0.5 rounded-full shadow shadow-cyan-300">
-              #{i + 1}
-            </div>
+        <h2
+          className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent text-center drop-shadow-[0_0_15px_rgba(0,191,255,0.8)] experience-heading mb-10"
+        >
+          <BsRocketTakeoff className="w-10 h-10 mr-3 text-cyan-400 inline" />
+          Projects
+        </h2>
 
-            <h3 className="text-2xl font-semibold text-cyan-300 mb-2 group-hover:text-cyan-400 transition-colors duration-200">
-              {proj.title}
-            </h3>
+        <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+          {projects.map((proj, i) => (
+            <div
+              key={i}
+              ref={(el) => (cardsRef.current[i] = el)}
 
-            <p className="text-gray-300 text-sm mb-3">{proj.desc}</p>
-
-            <p className="text-cyan-400 text-xs mb-4">
-              <span className="font-semibold">Tech Stack:</span> {proj.tech}
-            </p>
-
-            <a
-              href={proj.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-auto text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 rounded hover:from-cyan-600 hover:to-blue-600 shadow-md transition-all"
+              className="group relative bg-[#1e293b] border border-cyan-500/30 p-6 rounded-xl shadow-lg transition-transform hover:scale-[1.03] hover:shadow-cyan-500/60 hover:-translate-y-1 duration-300 cursor-default"
             >
-              <FiLink className="w-4 h-4 inline" /> View Project
-            </a>
-          </div>
-        ))}
-      </div>
-    </section>
-  </>
-);
+              <div className="absolute -top-4 left-4 bg-cyan-500 text-white text-xs px-2 py-0.5 rounded-full shadow shadow-cyan-300">
+                #{i + 1}
+              </div>
+
+              <h3 className="text-2xl font-semibold text-cyan-300 mb-2 group-hover:text-cyan-400 transition-colors duration-200">
+                {proj.title}
+              </h3>
+
+              <p className="text-gray-300 text-sm mb-3">{proj.desc}</p>
+
+              <p className="text-cyan-400 text-xs mb-4">
+                <span className="font-semibold">Tech Stack:</span> {proj.tech}
+              </p>
+
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-auto text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 rounded hover:from-cyan-600 hover:to-blue-600 shadow-md transition-all"
+              >
+                <FiLink className="w-4 h-4 inline" /> View Project
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  )
+};
 
 
 
