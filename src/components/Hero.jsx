@@ -253,7 +253,7 @@ const HeroWithImage = ({ imageSrc }) => {
                             View Projects
                         </button>
                         <a
-                            href="src/assets/BADAM_VENKATESH.pdf"
+                            href="https://drive.google.com/file/d/1CPvq5SO6z8KVdfHwVfWlUvwXROROr9Za/view?usp=drive_link"
                             target="_blank"
                             rel="noopener noreferrer"
                             ref={(el) => (buttonRefs.current[1] = el)}
