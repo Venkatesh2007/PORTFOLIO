@@ -12,7 +12,7 @@ function App() {
         <>
             <Navbar/>
             <div className="font-sans bg-primary text-white">
-                <Hero imageSrc="src/assets/badam.jpg"/>
+                <Hero imageSrc="public/badam.jpg"/>
                 <Experience />
                 <Skills />
                 <Education />
