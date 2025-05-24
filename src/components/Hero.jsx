@@ -150,7 +150,7 @@ const HeroWithImage = ({ imageSrc }) => {
     return (
         <>
             <Helmet>
-                <title>Badam Venkatesh | Software Developer Portfolio</title>
+                <title>Badam Venkatesh | Passionate Developer Portfolio</title>
                 <meta name="description" content="Hi, I am Badam Venkatesh, a passionate software developer open to internships and collaborations." />
                 <meta name="keywords" content="Badam Venkatesh, software developer, portfolio, internships, tech, coding" />
                 <meta name="author" content="Badam Venkatesh" />
